@@ -2,9 +2,9 @@ import { galleryItems } from "./gallery-items.js";
 // Change code below this line
 
 const gallery = document.querySelector(".gallery");
+const galleryMarkup = createImageGallery(galleryItems);
 
-gallery.insertAdjacentHTML("beforeend", createImageGallery(galleryItems));
-gallery.addEventListener("click", openImageOnModal);
+gallery.insertAdjacentHTML("beforeend", galleryMarkup);
 
 function createImageGallery(elements) {
   return elements
@@ -16,15 +16,9 @@ function createImageGallery(elements) {
     .join("");
 }
 
-function openImageOnModal(evt) {
-  evt.preventDefault();
-  if (evt.target.nodeName !== "IMG") {
-    return;
-  }
-  const lightbox = new SimpleLightbox(".gallery a", {
-    captionsData: "alt",
-    captionDelay: 250,
-  });
-}
+const lightbox = new SimpleLightbox(".gallery a", {
+  captionsData: "alt",
+  captionDelay: 250,
+});
 
 console.log(galleryItems);
